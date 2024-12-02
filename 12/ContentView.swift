@@ -9,13 +9,31 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack {
+            VStack {
+                Image(systemName: "dice")
+                    .imageScale(.large)
+                    .foregroundStyle(.tint)
+                Spacer()
+                Text("Welcome to 12!")
+                    .font(.system(size: 40, weight: .heavy))
+                Spacer()
+                
+                NavigationLink(destination: diceView()) {
+                    Text("Go to Dice View")
+                        .padding()
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                }
+                Spacer()
+                
+                .navigationTitle("Title Screen")
+                .toolbar(.hidden, for: .navigationBar)
+                
+            }
+            .padding()
         }
-        .padding()
     }
 }
 
