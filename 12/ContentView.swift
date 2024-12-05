@@ -9,30 +9,35 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        NavigationStack {
-            VStack {
-                Image(systemName: "dice")
-                    .imageScale(.large)
-                    .foregroundStyle(.tint)
-                Spacer()
-                Text("Welcome to 12!")
-                    .font(.system(size: 40, weight: .heavy))
-                Spacer()
-                
-                NavigationLink(destination: diceView()) {
-                    Text("Go to Dice View")
-                        .padding()
-                        .background(Color.blue)
+        NavigationView {
+            ZStack {
+                LinearGradient(colors: [.blue, .black], startPoint: .topLeading, endPoint: .bottomTrailing)
+                    .ignoresSafeArea()
+                VStack {
+                    Spacer()
+                    Text("Welcome to 12!")
+                        .font(.system(size: 40, weight: .heavy))
                         .foregroundColor(.white)
-                        .cornerRadius(10)
+                    Spacer()
+                    
+                    NavigationLink(destination: diceView()) {
+                        Text("Start Game")
+                            .padding()
+                            .background(Color.blue)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                    }
+                    Spacer()
+                    
+                    Image(systemName: "dice")
+                        .imageScale(.large)
+                        .foregroundStyle(.white)
+                        .font(.system(size: 60))
                 }
-                Spacer()
-                
-                .navigationTitle("Title Screen")
-                .toolbar(.hidden, for: .navigationBar)
-                
+                .padding()
             }
-            .padding()
+            .navigationTitle("Title Screen")
+            .toolbar(.hidden, for: .navigationBar)
         }
     }
 }
